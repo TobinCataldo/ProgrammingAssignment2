@@ -3,7 +3,7 @@
 ## cachematrix.R contains 3 functions
 ##
 ## makeCacheMatrix accepts an optional normal matrix and returns "special" matrix
-##                 with cached variables. Function implements assessors to check 
+##                 with cached variables. Function implements accessors to check 
 ##                 and manipulate property values (get/set)
 ##
 ## cacheSolve accepts a special matrix as created by makeCacheMatrix. cacheSolve 
@@ -61,7 +61,7 @@ cacheSolve <- function(x, ...) {
             return(x$getInverse())
         } else {
             # solving and setting the inverse
-            # will throw error when the matrix can be solved
+            # will throw error when the matrix can't be solved
             x$setInverse(solve(x$get(),...))
             message("caching data")
             return(x$getInverse())  
@@ -90,10 +90,10 @@ runTest <- function(makeError = FALSE) {
     # simple test
     cm <- makeCacheMatrix(mdat)
     print(cat("GET : ", cm$get()))
-    print(cat("GET INvERSE : ", cm$getInverse()))
+    print(cat("GET INVERSE : ", cm$getInverse()))
     cacheSolve(cm)
     print(cat("GET : ", cm$get()))
-    print(cat("GET INvERSE : ", cm$getInverse()))
+    print(cat("GET INVERSE : ", cm$getInverse()))
     cacheSolve(cm)
     
 }
